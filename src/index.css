@@ -1,0 +1,29 @@
+:root {
+  font: 16px/1.5 system-ui, 'Segoe UI', Roboto, sans-serif;
+  color: #243142;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(237, 242, 247, 0.92)),
+    #edf2f7;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+}
+
+button,
+dialog {
+  font: inherit;
+}
+
+#root {
+  min-height: 100svh;
+}
