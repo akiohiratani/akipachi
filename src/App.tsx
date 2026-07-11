@@ -39,22 +39,22 @@ function App() {
 
   return (
     <main className="app-shell">
+      <div className="selected-color-badge" aria-live="polite">
+        <span className="selected-color-dot" data-label={selectedColorLabel} />
+        <strong>{selectedColorLabel}</strong>
+      </div>
+
       <section className="game-panel" aria-labelledby="game-title">
         <div className="game-header">
-          <div>
-            <p className="eyebrow">Pattern order</p>
-            <h1 id="game-title">順番クリックゲーム</h1>
-          </div>
-          <div className="game-header-actions">
-            <div className="selected-color-badge" aria-live="polite">
-              <span>選択色</span>
-              <strong>{selectedColorLabel}</strong>
-            </div>
-            <TimerDisplay timeRemaining={timeRemaining} />
+          <div className="title-group">
+            <p className="eyebrow">Aki Pach</p>
           </div>
         </div>
 
-        <RuleBar order={game.order} />
+        <div className="status-row">
+          <RuleBar order={game.order} />
+          <TimerDisplay timeRemaining={timeRemaining} />
+        </div>
 
         <GameBoard tiles={game.tiles} onSelectTile={selectTile} />
       </section>
