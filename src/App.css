@@ -20,6 +20,130 @@
   gap: 16px;
 }
 
+.game-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.selected-color-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid #ced8e5;
+  border-radius: 999px;
+  background: #f7fafc;
+  color: #4a5568;
+  box-shadow: 0 8px 24px rgba(29, 48, 73, 0.08);
+}
+
+.selected-color-badge strong {
+  color: #243142;
+  font-size: 16px;
+}
+
+.color-selection-screen {
+  width: min(100%, 560px);
+}
+
+.color-selection-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 32px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 20px 60px rgba(10, 20, 35, 0.18);
+}
+
+.color-selection-card h1 {
+  margin: 0;
+  color: #1b2430;
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+.selection-error {
+  margin: 0;
+  color: #bc2f40;
+  font-weight: 700;
+}
+
+.selection-description,
+.selection-hint {
+  margin: 0;
+  color: #566274;
+}
+
+.color-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.color-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 12px 14px;
+  border: 1px solid #ced8e5;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #243142;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.color-option:hover {
+  border-color: #2e7d73;
+  background: #eef8f6;
+}
+
+.color-swatch {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  background: #cbd5e1;
+}
+
+.color-swatch[data-color='赤'] {
+  background: #ef4444;
+}
+
+.color-swatch[data-color='青'] {
+  background: #3b82f6;
+}
+
+.color-swatch[data-color='オレンジ'] {
+  background: #f59e0b;
+}
+
+.color-swatch[data-color='緑'] {
+  background: #10b981;
+}
+
+.color-swatch[data-color='ピンク'] {
+  background: #f472b6;
+}
+
+.color-swatch[data-color='紫'] {
+  background: #8b5cf6;
+}
+
+.color-swatch[data-color='ゴールド'] {
+  background: #d4af37;
+}
+
+.color-swatch[data-color='白'] {
+  background: #ffffff;
+}
+
 .eyebrow {
   margin: 0 0 6px;
   color: #6a778a;
@@ -199,6 +323,18 @@
   .game-header {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .game-header-actions {
+    justify-content: flex-start;
+  }
+
+  .color-selection-card {
+    padding: 24px;
+  }
+
+  .color-options {
+    grid-template-columns: 1fr;
   }
 
   .game-header h1 {

@@ -10,7 +10,11 @@ import {
 
 type GameStatus = 'playing' | 'cleared'
 
-export const useNumberSequenceGame = () => {
+type UseNumberSequenceGameOptions = {
+  onGameCleared?: () => void
+}
+
+export const useNumberSequenceGame = ({ onGameCleared }: UseNumberSequenceGameOptions = {}) => {
   const [game, setGame] = useState<GameState>(() => createGame())
   const [timeRemaining, setTimeRemaining] = useState(TIME_LIMIT_SECONDS)
   const [status, setStatus] = useState<GameStatus>('playing')
@@ -37,6 +41,7 @@ export const useNumberSequenceGame = () => {
 
         if (isGameCompleted(nextGame)) {
           setStatus('cleared')
+          onGameCleared?.()
         }
 
         return nextGame
