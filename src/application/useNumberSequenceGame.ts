@@ -8,7 +8,9 @@ import {
   type GameState,
 } from '../domain/game'
 
-type GameStatus = 'playing' | 'cleared'
+type GameStatus = 'playing' | 'missed' | 'cleared'
+
+const MISS_MODAL_DURATION_MS = 5000
 
 type UseNumberSequenceGameOptions = {
   onGameCleared?: () => void
@@ -18,6 +20,7 @@ export const useNumberSequenceGame = ({ onGameCleared }: UseNumberSequenceGameOp
   const [game, setGame] = useState<GameState>(() => createGame())
   const [timeRemaining, setTimeRemaining] = useState(TIME_LIMIT_SECONDS)
   const [status, setStatus] = useState<GameStatus>('playing')
+  const [missedProgress, setMissedProgress] = useState(0)
 
   const startNextGame = useCallback(() => {
     setGame(createGame())
@@ -33,7 +36,9 @@ export const useNumberSequenceGame = ({ onGameCleared }: UseNumberSequenceGameOp
 
       setGame((currentGame) => {
         if (!isExpectedTile(currentGame, value)) {
+          setMissedProgress(currentGame.nextIndex)
           setTimeRemaining(TIME_LIMIT_SECONDS)
+          setStatus('missed')
           return createGame()
         }
 
@@ -47,8 +52,20 @@ export const useNumberSequenceGame = ({ onGameCleared }: UseNumberSequenceGameOp
         return nextGame
       })
     },
-    [status],
+    [onGameCleared, status],
   )
+
+  useEffect(() => {
+    if (status !== 'missed') {
+      return
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setStatus('playing')
+    }, MISS_MODAL_DURATION_MS)
+
+    return () => window.clearTimeout(timeoutId)
+  }, [status])
 
   useEffect(() => {
     if (status !== 'playing') {
@@ -73,6 +90,8 @@ export const useNumberSequenceGame = ({ onGameCleared }: UseNumberSequenceGameOp
     game,
     timeRemaining,
     isClearModalOpen: status === 'cleared',
+    isMissModalOpen: status === 'missed',
+    missedProgress,
     selectTile,
     startNextGame,
   }

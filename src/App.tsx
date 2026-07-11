@@ -3,6 +3,7 @@ import { useNumberSequenceGame } from './application/useNumberSequenceGame'
 import { ClearModal } from './presentation/components/ClearModal'
 import { ColorSelectionScreen } from './presentation/components/ColorSelectionScreen'
 import { GameBoard } from './presentation/components/GameBoard'
+import { MissModal } from './presentation/components/MissModal'
 import { RuleBar } from './presentation/components/RuleBar'
 import { TimerDisplay } from './presentation/components/TimerDisplay'
 import './App.css'
@@ -20,6 +21,8 @@ function App() {
     game,
     timeRemaining,
     isClearModalOpen,
+    isMissModalOpen,
+    missedProgress,
     selectTile,
     startNextGame,
   } = useNumberSequenceGame()
@@ -60,6 +63,7 @@ function App() {
       </section>
 
       <ClearModal isOpen={isClearModalOpen} onClose={handleModalClose} />
+      <MissModal isOpen={isMissModalOpen} completedCount={missedProgress} />
     </main>
   )
 }
