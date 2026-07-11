@@ -15,8 +15,8 @@ export type GameState = {
 }
 
 export const BOARD_SIZE = 9
-export const MAX_PATTERN_NUMBER = 12
-export const TIME_LIMIT_SECONDS = 60
+export const MAX_PATTERN_NUMBER = 30
+export const TIME_LIMIT_SECONDS = 15
 
 export const createGame = (): GameState => {
   const values = shuffle(range(1, MAX_PATTERN_NUMBER)).slice(0, BOARD_SIZE)

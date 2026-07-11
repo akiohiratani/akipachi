@@ -270,6 +270,11 @@
     opacity 140ms ease;
 }
 
+.pattern-tile--correct {
+  animation: pattern-tile-correct 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
 .pattern-tile:hover:not(:disabled) {
   border-color: #2e7d73;
   box-shadow: 0 12px 26px rgba(39, 82, 92, 0.16);
@@ -284,7 +289,8 @@
 .pattern-tile:disabled {
   cursor: default;
   opacity: 0.24;
-  transform: scale(0.96);
+  filter: grayscale(1);
+  transform: none;
 }
 
 .pattern-tile img {
@@ -297,6 +303,24 @@
   user-select: none;
   pointer-events: none;
   display: block;
+}
+
+@keyframes pattern-tile-correct {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  25% {
+    transform: scale(1.25) translate(-2px, -2px);
+  }
+  50% {
+    transform: scale(1.50) translate(-2px, -2px);
+  }
+  75% {
+    transform: scale(1.25) translate(2px, 1px);
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
 }
 
 .rule-bar {

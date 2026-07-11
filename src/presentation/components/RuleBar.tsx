@@ -5,8 +5,8 @@ type RuleBarProps = {
 }
 
 const ruleLabels: Record<GameOrder, string> = {
-  ascending: '古い順',
-  descending: '新しい順',
+  ascending: '小さい順↑↑',
+  descending: '大きい順↓↓ ',
 }
 
 export const RuleBar = ({ order }: RuleBarProps) => (
